@@ -105,10 +105,14 @@ export class Select {
 
   open() {
     this.element?.classList.add(className.OPEN);
+    this.arrow?.classList.remove(className.ARROW_UP);
+    this.arrow?.classList.add(className.ARROW_DOWN);
   }
 
   close() {
     this.element?.classList.remove(className.OPEN);
+    this.arrow?.classList.remove(className.ARROW_DOWN);
+    this.arrow?.classList.add(className.ARROW_UP);
   }
 
   destroy() {
@@ -120,14 +124,6 @@ export class Select {
   }
 
   toggle() {
-    if (this.isOpen) {
-      this.close();
-      this.arrow?.classList.remove(className.ARROW_DOWN);
-      this.arrow?.classList.add(className.ARROW_UP);
-    } else {
-      this.open();
-      this.arrow?.classList.remove(className.ARROW_UP);
-      this.arrow?.classList.add(className.ARROW_DOWN);
-    }
+    this.isOpen ? this.close() : this.open();
   }
 }
