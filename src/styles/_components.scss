@@ -1,5 +1,19 @@
 .select {
-  width: 30vw;
+  width: 90vw;
+  @media screen and (min-width: 392px) {
+    width: 80vw;
+  }
+  @media screen and (min-width: 422px) {
+    width: 70vw;
+  }
+  @media screen and (min-width: 562px) {
+    width: 60vw;
+  }
+  @media screen and (min-width: 762px) {
+    width: 50vw;
+  }
+
+  max-width: 45rem;
   position: relative;
   z-index: $DEFAULT_Z_INDEX;
 
