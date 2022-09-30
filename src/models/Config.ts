@@ -1,8 +1,11 @@
+export type Item = {
+  id: number;
+  value: string;
+};
+
 export interface Config {
   placeHolder: string;
   selectedId?: number;
-  data: {
-    id: number;
-    value: string;
-  }[];
+  data: Item[];
+  onSelect?: (item: Item) => void;
 }

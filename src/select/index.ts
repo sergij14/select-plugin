@@ -83,8 +83,13 @@ export class Select {
 
       this.selectedId = +id;
       this.close();
+
       if (this.value && this.currentItem) {
         this.value.textContent = this.currentItem.value;
+      }
+
+      if (this.config.onSelect && this.currentItem) {
+        this.config.onSelect(this.currentItem);
       }
     }
   }
