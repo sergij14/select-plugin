@@ -29,7 +29,7 @@ export class Select {
     const { placeHolder, data } = this.config;
     const template = getTemplate(data, placeHolder);
     this.element?.classList.add(className.SELECT);
-    this.element?.setAttribute("tabindex", '0');
+    this.element?.setAttribute("tabindex", "0");
 
     if (this.element) {
       this.element.innerHTML = template;
@@ -114,6 +114,7 @@ export class Select {
   destroy() {
     if (this.element) {
       this.element.removeEventListener("click", this.clickHandler);
+      this.element.removeEventListener("keypress", this.keyPressHandler);
       this.element.innerHTML = "";
     }
   }
