@@ -53,10 +53,17 @@
     border-radius: 10px;
     cursor: pointer;
     color: #607eaa;
+    outline: revert !important;
   }
 
   &:focus &__input {
     background-color: #f9f5eb;
+    border: 1px rgba(#607eaa, 0.8) solid;
+  }
+
+  &:focus {
+    outline: none;
+    border-radius: 10px;
   }
 
   &__dropdown {
