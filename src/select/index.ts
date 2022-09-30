@@ -67,6 +67,9 @@ export class Select {
       const id = evTarget.dataset.id;
       this.select(id);
     }
+    if (dataAttr === dataAttrs.BACKDROP) {
+      this.close();
+    } 
   }
 
   select(id?: string) {

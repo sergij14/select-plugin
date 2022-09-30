@@ -1,6 +1,7 @@
 .select {
   width: 30vw;
   position: relative;
+  z-index: $DEFAULT_Z_INDEX;
 
   &.open {
     .select__dropdown {
@@ -9,6 +10,19 @@
     .select__input {
       border-bottom: none;
     }
+    .select__backdrop {
+      display: block;
+    }
+  }
+
+  &__backdrop {
+    background-color: transparent;
+    inset: 0;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    display: none;
   }
 
   &__input {

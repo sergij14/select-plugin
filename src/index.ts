@@ -6,4 +6,4 @@ const select = new Select("#select", {
   data: mockData,
 });
 
-(window as any).select = select;
+(window as any).sl = select;
