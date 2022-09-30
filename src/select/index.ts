@@ -18,6 +18,11 @@ export class Select {
     this.config = config;
     this.render();
     this.setup();
+
+    if (config.selectedId) {
+      const idStr = config.selectedId.toString();
+      this.select(idStr);
+    }
   }
 
   private render() {
@@ -65,7 +70,9 @@ export class Select {
   }
 
   select(id?: string) {
-    if (id) {
+    const idIsInData = id && this.config.data.find((item) => item.id === +id);
+
+    if (idIsInData) {
       this.element
         ?.querySelectorAll(`[data-type="${dataAttrs.ITEM}"]`)
         .forEach((el) => el.classList.remove(className.SELECTED));
