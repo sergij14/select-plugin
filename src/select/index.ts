@@ -29,6 +29,7 @@ export class Select {
     const { placeHolder, data } = this.config;
     const template = getTemplate(data, placeHolder);
     this.element?.classList.add(className.SELECT);
+    this.element?.setAttribute("tabindex", '0');
 
     if (this.element) {
       this.element.innerHTML = template;
@@ -37,6 +38,7 @@ export class Select {
 
   private setup() {
     this.clickHandler = this.clickHandler.bind(this);
+    this.keyPressHandler = this.keyPressHandler.bind(this);
     this.arrow = this.element?.querySelector(
       `[data-type="${dataAttrs.ARROW}"]`
     );
@@ -44,6 +46,7 @@ export class Select {
       `[data-type="${dataAttrs.VALUE}"]`
     );
     this.element?.addEventListener("click", this.clickHandler);
+    this.element?.addEventListener("keypress", this.keyPressHandler);
   }
 
   get isOpen() {
@@ -54,6 +57,12 @@ export class Select {
     if (this.selectedId)
       return this.config.data.find((item) => item.id === this.selectedId);
     return undefined;
+  }
+
+  keyPressHandler(ev: KeyboardEvent) {
+    if (ev.code === "Enter") {
+      this.open();
+    }
   }
 
   clickHandler(ev: Event) {

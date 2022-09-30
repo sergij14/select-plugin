@@ -37,6 +37,10 @@
     cursor: pointer;
   }
 
+  &:focus &__input {
+    background-color: lightcyan;
+  }
+
   &__dropdown {
     position: absolute;
     display: none;
