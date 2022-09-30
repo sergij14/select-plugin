@@ -17,8 +17,8 @@ export class Select {
   }
 
   private render() {
-    const { placeHolder } = this.config;
-    const template = getTemplate(placeHolder);
+    const { placeHolder, data } = this.config;
+    const template = getTemplate(data, placeHolder);
     this.element?.classList.add(className.SELECT);
 
     if (this.element) {

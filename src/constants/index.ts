@@ -8,4 +8,5 @@ export const className = {
 export const dataAttrs = {
   INPUT: "input",
   ARROW: "arrow",
+  ITEM: "item",
 } as const;
