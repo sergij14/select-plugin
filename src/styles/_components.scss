@@ -44,6 +44,11 @@
     padding: 1rem;
     background-color: lightcoral;
     border-bottom: 1px lightgray solid;
+
+    &.selected {
+      background-color: lightgreen;
+    }
+
     &:hover {
       background-color: lightpink;
       cursor: pointer;
