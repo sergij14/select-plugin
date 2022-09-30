@@ -11,12 +11,14 @@ export class Select {
 
   constructor(selector: string, config: Config) {
     this.element = document.querySelector(selector);
+    this.config = config;
     this.render();
     this.setup();
   }
 
   private render() {
-    const template = getTemplate();
+    const { placeHolder } = this.config;
+    const template = getTemplate(placeHolder);
     this.element?.classList.add(className.SELECT);
 
     if (this.element) {
@@ -26,15 +28,16 @@ export class Select {
 
   private setup() {
     this.clickHandler = this.clickHandler.bind(this);
-    this.arrow = this.element?.querySelector(`[data-type="${dataAttrs.ARROW}"]`);
+    this.arrow = this.element?.querySelector(
+      `[data-type="${dataAttrs.ARROW}"]`
+    );
     this.element?.addEventListener("click", this.clickHandler);
   }
 
-
-  clickHandler(ev: MouseEvent) {
+  clickHandler(ev: Event) {
     const evTarget = ev.target as HTMLElement;
     const dataAttr = evTarget.dataset.type;
-
+    
     if (dataAttr === dataAttrs.INPUT) {
       this.toggle();
     }
@@ -57,14 +60,14 @@ export class Select {
   }
 
   toggle() {
-    if(this.isOpen){
-        this.close()
-        this.arrow?.classList.remove(className.ARROW_DOWN)
-        this.arrow?.classList.add(className.ARROW_UP)
+    if (this.isOpen) {
+      this.close();
+      this.arrow?.classList.remove(className.ARROW_DOWN);
+      this.arrow?.classList.add(className.ARROW_UP);
     } else {
-        this.open()
-        this.arrow?.classList.remove(className.ARROW_UP)
-        this.arrow?.classList.add(className.ARROW_DOWN)
+      this.open();
+      this.arrow?.classList.remove(className.ARROW_UP);
+      this.arrow?.classList.add(className.ARROW_DOWN);
     }
   }
 }

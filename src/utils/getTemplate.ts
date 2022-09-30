@@ -1,6 +1,6 @@
-export const getTemplate = () => `
+export const getTemplate = (placeHolderText: string) => `
     <div class="select__input" data-type="input">
-    <span>text</span>
+    <span>${placeHolderText}</span>
     <i class="fa-solid fa-caret-up" data-type="arrow"></i>
     </div>
     <div class="select__dropdown el-hi">
