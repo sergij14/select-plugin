@@ -3,10 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <title>Select plugin</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="./src/styles/index.scss" />
   </head>
   <body>
-    <div id="select" class="select">
+    <div id="select" class="select open">
+      <div class="select__input">
+        <span>text</span>
+        <i class="fa-solid fa-caret-down"></i>
+      </div>
+      <div class="select__dropdown el-hi">
+        <ul class="select__list">
+          <li class="select__item">item 0</li>
+          <li class="select__item">item 1</li>
+          <li class="select__item">item 2</li>
+          <li class="select__item">item 0</li>
+          <li class="select__item">item 1</li>
+          <li class="select__item">item 2</li>
+          <li class="select__item">item 0</li>
+          <li class="select__item">item 1</li>
+          <li class="select__item">item 2</li>
+        </ul>
+      </div>
     </div>
     <script src="./src/index.ts" type="module"></script>
   </body>

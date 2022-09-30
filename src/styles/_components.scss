@@ -1,2 +1,52 @@
 .select {
+  width: 30vw;
+  position: relative;
+
+  &.open {
+    .select__dropdown {
+      display: block;
+    }
+    .select__input {
+      border-bottom: none;
+    }
+  }
+
+  &__input {
+    border: 1px green solid;
+    background-color: #ccc;
+    height: $SELECT_INPUT_HEIGHT;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+  }
+
+  &__dropdown {
+    position: absolute;
+    display: none;
+    background-color: gray;
+    top: $SELECT_INPUT_HEIGHT;
+    left: 0;
+    right: 0;
+    border: 1px red solid;
+    max-height: 20rem;
+    overflow-y: auto;
+  }
+
+  &__list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__item {
+    padding: 1rem;
+    background-color: lightcoral;
+    border-bottom: 1px lightgray solid;
+    &:hover {
+      background-color: lightpink;
+      cursor: pointer;
+      transition: all 200ms ease-in-out;
+    }
+  }
 }
