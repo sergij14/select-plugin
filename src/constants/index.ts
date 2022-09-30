@@ -7,7 +7,6 @@ export const className = {
 } as const;
 
 export const dataAttrs = {
-  INPUT: "input",
   ARROW: "arrow",
   ITEM: "item",
   VALUE: "value",

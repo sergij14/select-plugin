@@ -60,16 +60,14 @@ export class Select {
     const evTarget = ev.target as HTMLElement;
     const dataAttr = evTarget.dataset.type;
 
-    if (dataAttr === dataAttrs.INPUT) {
-      this.toggle();
-    }
     if (dataAttr === dataAttrs.ITEM) {
       const id = evTarget.dataset.id;
       this.select(id);
-    }
-    if (dataAttr === dataAttrs.BACKDROP) {
+    } else if (dataAttr === dataAttrs.BACKDROP) {
       this.close();
-    } 
+    } else {
+      this.toggle();
+    }
   }
 
   select(id?: string) {

@@ -10,7 +10,7 @@ export const getTemplate = (data: Config["data"], placeHolderText: string) => {
     .replace(/,/g, "");
 
   return `
-       <div class="select__input" data-type="input">
+       <div class="select__input">
            <div class="select__backdrop" data-type="backdrop"></div>
            <span data-type="value">${placeHolderText}</span>
            <i class="fa-solid fa-caret-up" data-type="arrow"></i>
