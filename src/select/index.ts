@@ -97,7 +97,10 @@ export class Select {
   }
 
   destroy() {
-    this.element?.removeEventListener("click", this.clickHandler);
+    if (this.element) {
+      this.element.removeEventListener("click", this.clickHandler);
+      this.element.innerHTML = "";
+    }
   }
 
   toggle() {
