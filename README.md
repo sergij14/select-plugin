@@ -1,3 +1,3 @@
 # Select plugin
 
-Select plugin built with vanilla TypeScript & OOP.
+Select plugin built with vanilla TypeScript.
