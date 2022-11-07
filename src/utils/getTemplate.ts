@@ -1,13 +1,11 @@
 import { Config } from "./../models/Config";
 
 export const getTemplate = (data: Config["data"], placeHolderText: string) => {
-  const items = data
-    .map(
-      ({ id, value }) =>
-        `<li tabindex="0" class="select__item" data-type="item" data-id="${id}">${value}</li>`
-    )
-    .toString()
-    .replace(/,/g, "");
+  let listTemplate = "";
+  data.forEach(
+    ({ id, value }) =>
+      (listTemplate += `<li role="listbox" tabindex="0" class="select__item" data-type="item" data-id="${id}">${value}</li>`)
+  );
 
   return `
            <div class="select__input">
@@ -17,8 +15,8 @@ export const getTemplate = (data: Config["data"], placeHolderText: string) => {
            </div>
            <div class="select__dropdown">
               <div class="select__dropdown__inner">              
-                  <ul class="select__list">
-                      ${items}
+                  <ul class="select__list" role="listbox">
+                      ${listTemplate}
                   </ul>
               </div>
           </div>
