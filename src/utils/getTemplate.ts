@@ -4,7 +4,7 @@ export const getTemplate = (data: Config["data"], placeHolderText: string) => {
   let listTemplate = "";
   data.forEach(
     ({ id, value }) =>
-      (listTemplate += `<li role="listbox" tabindex="0" class="select__item" data-type="item" data-id="${id}">${value}</li>`)
+      (listTemplate += `<li role="option" tabindex="0" class="select__item" data-type="item" data-id="${id}">${value}</li>`)
   );
 
   return `
