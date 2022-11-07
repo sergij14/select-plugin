@@ -59,10 +59,10 @@ export class Select {
     return undefined;
   }
 
-  keyPressHanlder(ev: any) {
-    if (ev.target.dataset.type === "item") {
+  keyPressHanlder(ev: KeyboardEvent) {
+    if ((ev.target as HTMLElement)?.dataset.type === "item") {
       if (ev.code === "Enter") {
-        this.select(ev.target.dataset.id);
+        this.select((ev.target as HTMLElement).dataset.id);
       }
       return;
     }
