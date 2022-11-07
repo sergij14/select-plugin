@@ -4,7 +4,7 @@ export const getTemplate = (data: Config["data"], placeHolderText: string) => {
   const items = data
     .map(
       ({ id, value }) =>
-        `<li class="select__item" data-type="item" data-id="${id}">${value}</li>`
+        `<li tabindex="0" class="select__item" data-type="item" data-id="${id}">${value}</li>`
     )
     .toString()
     .replace(/,/g, "");

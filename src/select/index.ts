@@ -38,7 +38,7 @@ export class Select {
 
   private setup() {
     this.clickHandler = this.clickHandler.bind(this);
-    this.keyPressHandler = this.keyPressHandler.bind(this);
+    this.keyPressHanlder = this.keyPressHanlder.bind(this);
     this.arrow = this.element?.querySelector(
       `[data-type="${dataAttrs.ARROW}"]`
     );
@@ -46,7 +46,7 @@ export class Select {
       `[data-type="${dataAttrs.VALUE}"]`
     );
     this.element?.addEventListener("click", this.clickHandler);
-    this.element?.addEventListener("keypress", this.keyPressHandler);
+    this.element?.addEventListener("keypress", this.keyPressHanlder);
   }
 
   get isOpen() {
@@ -59,10 +59,14 @@ export class Select {
     return undefined;
   }
 
-  keyPressHandler(ev: KeyboardEvent) {
-    if (ev.code === "Enter") {
-      this.open();
+  keyPressHanlder(ev: any) {
+    if (ev.target.dataset.type === "item") {
+      if (ev.code === "Enter") {
+        this.select(ev.target.dataset.id);
+      }
+      return;
     }
+    this.toggle();
   }
 
   clickHandler(ev: Event) {
@@ -118,7 +122,7 @@ export class Select {
   destroy() {
     if (this.element) {
       this.element.removeEventListener("click", this.clickHandler);
-      this.element.removeEventListener("keypress", this.keyPressHandler);
+      this.element.removeEventListener("keypress", this.keyPressHanlder);
       this.element.innerHTML = "";
     }
   }
