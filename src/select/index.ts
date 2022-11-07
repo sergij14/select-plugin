@@ -46,7 +46,7 @@ export class Select {
       `[data-type="${dataAttrs.VALUE}"]`
     );
     this.element?.addEventListener("click", this.clickHandler);
-    this.element?.addEventListener("keypress", this.keyPressHanlder);
+    this.element?.addEventListener("keydown", this.keyPressHanlder);
   }
 
   get isOpen() {
@@ -60,13 +60,15 @@ export class Select {
   }
 
   keyPressHanlder(ev: KeyboardEvent) {
-    if ((ev.target as HTMLElement)?.dataset.type === "item") {
-      if (ev.code === "Enter") {
-        this.select((ev.target as HTMLElement).dataset.id);
+    if (ev.code === "Enter") {
+      if ((ev.target as HTMLElement)?.dataset.type === "item") {
+        return this.select((ev.target as HTMLElement).dataset.id);
       }
-      return;
+      this.toggle();
     }
-    this.toggle();
+    if (ev.code === "Escape") {
+      this.toggle();
+    }
   }
 
   clickHandler(ev: Event) {
