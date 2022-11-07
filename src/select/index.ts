@@ -13,6 +13,8 @@ export class Select {
 
   private selectedId?: number;
 
+  private focusedItemNodeIdx?: number;
+
   constructor(selector: string, config: Config) {
     this.element = document.querySelector(selector);
     this.config = config;
@@ -59,6 +61,38 @@ export class Select {
     return undefined;
   }
 
+  forceItemFocus(code: "ArrowUp" | "ArrowDown") {
+    const allItemNodes = this.element?.querySelectorAll(
+      `[data-type="${dataAttrs.ITEM}"]`
+    );
+    const selectedItemNode = this.element?.querySelector(
+      `[data-id="${this.selectedId}"]`
+    );
+
+    if (allItemNodes) {
+      const activeItemNodeIdx =
+        selectedItemNode && Array.from(allItemNodes).indexOf(selectedItemNode);
+
+      if (this.focusedItemNodeIdx === undefined) {
+        this.focusedItemNodeIdx = activeItemNodeIdx ? activeItemNodeIdx + 1 : 0;
+      } else {
+        this.focusedItemNodeIdx =
+          code === "ArrowDown"
+            ? this.focusedItemNodeIdx + 1
+            : this.focusedItemNodeIdx - 1;
+      }
+
+      if (allItemNodes[this.focusedItemNodeIdx]) {
+        (allItemNodes[this.focusedItemNodeIdx] as HTMLElement).focus();
+      } else {
+        this.focusedItemNodeIdx =
+          code === "ArrowDown" ? 0 : allItemNodes.length - 1;
+
+        (allItemNodes[this.focusedItemNodeIdx] as HTMLElement).focus();
+      }
+    }
+  }
+
   keyPressHanlder(ev: KeyboardEvent) {
     if (ev.code === "Enter") {
       if ((ev.target as HTMLElement)?.dataset.type === "item") {
@@ -69,16 +103,20 @@ export class Select {
     if (ev.code === "Escape") {
       this.toggle();
     }
+    if (ev.code === "ArrowUp" || ev.code === "ArrowDown") {
+      ev.preventDefault();
+      this.forceItemFocus(ev.code);
+    }
   }
 
   clickHandler(ev: Event) {
     const evTarget = ev.target as HTMLElement;
-    const dataAttr = evTarget.dataset.type;
+    const { type } = evTarget.dataset;
 
-    if (dataAttr === dataAttrs.ITEM) {
+    if (type === dataAttrs.ITEM) {
       const id = evTarget.dataset.id;
       this.select(id);
-    } else if (dataAttr === dataAttrs.BACKDROP) {
+    } else if (type === dataAttrs.BACKDROP) {
       this.close();
     } else {
       this.toggle();
