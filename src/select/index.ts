@@ -98,7 +98,7 @@ export class Select {
     const { type } = evTarget.dataset;
 
     if (ev.code === "Enter") {
-      if (type === "item") {
+      if (type === dataAttrs.ITEM) {
         return this.select(evTarget.dataset.id);
       }
       this.toggle();
