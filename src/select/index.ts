@@ -94,11 +94,12 @@ export class Select {
   }
 
   keyPressHanlder(ev: KeyboardEvent) {
-    console.log('keypress');
-    
+    const evTarget = ev.target as HTMLElement;
+    const { type } = evTarget.dataset;
+
     if (ev.code === "Enter") {
-      if ((ev.target as HTMLElement)?.dataset.type === "item") {
-        return this.select((ev.target as HTMLElement).dataset.id);
+      if (type === "item") {
+        return this.select(evTarget.dataset.id);
       }
       this.toggle();
     }
@@ -118,6 +119,8 @@ export class Select {
     if (type === dataAttrs.ITEM) {
       const id = evTarget.dataset.id;
       this.select(id);
+    } else if (type === dataAttrs.BACKDROP) {
+      this.close();
     } else {
       this.toggle();
     }

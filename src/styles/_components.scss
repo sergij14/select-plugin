@@ -3,6 +3,7 @@
   max-width: 45rem;
   position: relative;
   margin: 1rem;
+  z-index: $SELECT_Z_INDEX;
 
   &.open {
     .select__dropdown {
@@ -33,7 +34,6 @@
     border: 1px #ccc solid;
     background-color: rgba(#607eaa, 0.1);
     height: $SELECT_INPUT_HEIGHT;
-    z-index: $DEFAULT_Z_INDEX;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -61,6 +61,7 @@
     background-color: #f9f5eb;
     top: $SELECT_INPUT_HEIGHT;
     left: 0;
+    z-index: $SELECT_Z_INDEX + 1;
     right: 0;
     padding: 0.5rem;
     border-radius: 10px;

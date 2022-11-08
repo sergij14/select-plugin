@@ -9,6 +9,7 @@ export const getTemplate = (data: Config["data"], placeHolderText: string) => {
 
   return `
            <div class="select__input">
+              <div class="select__backdrop" data-type="backdrop"></div>
               <span data-type="value">${placeHolderText}</span>
               <i class="fa-solid fa-caret-up" data-type="arrow"></i>
            </div>
