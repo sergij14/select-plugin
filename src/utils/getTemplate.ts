@@ -4,12 +4,11 @@ export const getTemplate = (data: Config["data"], placeHolderText: string) => {
   let listTemplate = "";
   data.forEach(
     ({ id, value }) =>
-      (listTemplate += `<li role="option" tabindex="0" class="select__item" data-type="item" data-id="${id}">${value}</li>`)
+      (listTemplate += `<li role="option" tabindex="-1" class="select__item" data-type="item" data-id="${id}">${value}</li>`)
   );
 
   return `
            <div class="select__input">
-              <div class="select__backdrop" data-type="backdrop"></div>
               <span data-type="value">${placeHolderText}</span>
               <i class="fa-solid fa-caret-up" data-type="arrow"></i>
            </div>

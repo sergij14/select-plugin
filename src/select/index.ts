@@ -94,6 +94,8 @@ export class Select {
   }
 
   keyPressHanlder(ev: KeyboardEvent) {
+    console.log('keypress');
+    
     if (ev.code === "Enter") {
       if ((ev.target as HTMLElement)?.dataset.type === "item") {
         return this.select((ev.target as HTMLElement).dataset.id);
@@ -116,8 +118,6 @@ export class Select {
     if (type === dataAttrs.ITEM) {
       const id = evTarget.dataset.id;
       this.select(id);
-    } else if (type === dataAttrs.BACKDROP) {
-      this.close();
     } else {
       this.toggle();
     }
