@@ -1,3 +1,3 @@
 # Select plugin
 
-A custom select plugin built with vanilla TypeScript.
+A custom, accessible select plugin built with vanilla TypeScript.
